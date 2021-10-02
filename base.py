@@ -1,5 +1,4 @@
 #######
-# First Milestone Project: Develop a Stock Ticker
 # dashboard that either allows the user to enter
 # a ticker symbol into an input box, or to select
 # item(s) from a dropdown list, and uses pandas_datareader
@@ -7,7 +6,6 @@
 ######
 
 # EXPAND STOCK SYMBOL INPUT TO PERMIT MULTIPLE STOCK SELECTION
-import os
 
 import dash
 import dash_core_components as dcc
@@ -16,9 +14,15 @@ from dash.dependencies import Input, Output, State
 import pandas_datareader.data as web  # requires v0.6.0 or later
 from datetime import datetime
 import pandas as pd
+import dash_auth  # pip install dash-auth
 import os
 
+USERNAME_PASSWORD_PAIRS = [['username','password'],['alia','pw1234']]
+
+
 app = dash.Dash()
+auth = dash_auth.BasicAuth(app,USERNAME_PASSWORD_PAIRS)
+
 os.environ["ALPHAVANTAGE_API_KEY"] = "XFS6RYW9NVSE58VF"
 nsdq = pd.read_csv('NASDAQcompanylist.csv')
 nsdq.set_index('Symbol', inplace=True)
@@ -84,4 +88,4 @@ def update_graph(n_clicks, stock_ticker, start_date, end_date):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(port='8256')
+    app.run_server(port='1111')
