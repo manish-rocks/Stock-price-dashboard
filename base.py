@@ -22,7 +22,7 @@ USERNAME_PASSWORD_PAIRS = [['username','password'],['alia','pw1234']]
 
 app = dash.Dash()
 auth = dash_auth.BasicAuth(app,USERNAME_PASSWORD_PAIRS)
-
+server = app.server  #for deployment purpose
 os.environ["ALPHAVANTAGE_API_KEY"] = "XFS6RYW9NVSE58VF"
 nsdq = pd.read_csv('NASDAQcompanylist.csv')
 nsdq.set_index('Symbol', inplace=True)
