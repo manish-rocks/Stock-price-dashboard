@@ -88,4 +88,4 @@ def update_graph(n_clicks, stock_ticker, start_date, end_date):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(port='1111')
+    app.run_server()
