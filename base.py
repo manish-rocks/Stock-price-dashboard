@@ -17,13 +17,13 @@ import pandas as pd
 import dash_auth  # pip install dash-auth
 import os
 
-USERNAME_PASSWORD_PAIRS = [['username','password'],['alia','pw1234']]
+USERNAME_PASSWORD_PAIRS = [['username','password'],['alia','pw1234']]   # use this default passwords to enter into the dashboard
 
 
 app = dash.Dash()
 auth = dash_auth.BasicAuth(app,USERNAME_PASSWORD_PAIRS)
 server = app.server  #for deployment purpose
-os.environ["ALPHAVANTAGE_API_KEY"] = "XFS6RYW9NVSE58VF"
+os.environ["ALPHAVANTAGE_API_KEY"] = "paste your api key for ALPHAVANTAGE"    # to get api keys visit https://www.alphavantage.co/support/#api-key
 nsdq = pd.read_csv('NASDAQcompanylist.csv')
 nsdq.set_index('Symbol', inplace=True)
 options = []
